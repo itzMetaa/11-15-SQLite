@@ -21,6 +21,11 @@ namespace _11_15_SQLite
                     meret INTEGER NOT NULL
                 )";
                 command.ExecuteNonQuery();
+
+                var beszurCmd = conn.CreateCommand();
+                beszurCmd.CommandText = @"INSERT INTO macskak(nev,meret)
+                VALUES ('Tigris', 45), ('Cirmos', 20), ('Pici', 120)";
+                beszurCmd.ExecuteNonQuery();
             }
         }
     }
