@@ -12,7 +12,7 @@ namespace _11_15_SQLite
         static void Main(string[] args)
         {       //ConnectionStrings.com
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=mydb.db"))
-            { 
+            {  
                 conn.Open();
             }
         }
