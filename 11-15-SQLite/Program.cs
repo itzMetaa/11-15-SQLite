@@ -15,7 +15,7 @@ namespace _11_15_SQLite
             {  
                 conn.Open();
                 var command = conn.CreateCommand();
-                command.CommandText = @"CREATE TABLE macskak (
+                command.CommandText = @"CREATE TABLE IF NOT EXISTS macskak (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nev VARCHAR(1000) NOT NULL,
                     meret INTEGER NOT NULL
