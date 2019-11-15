@@ -34,6 +34,23 @@ namespace _11_15_SQLite
                 long db = (long)osszegCmd.ExecuteScalar();
 
                 Console.WriteLine("Darab " + db);
+
+                var lekerdezesCmd = conn.CreateCommand();
+                lekerdezesCmd.CommandText = @"
+                    SELECT id, nev, meret FROM macskak
+                ";
+
+                using (var reader = lekerdezesCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        long id = reader.GetInt64(0);
+                        string nev = reader.GetString(1);
+                        long meret = reader.GetInt64(2);
+                        Console.WriteLine("{0}, {1}cm ({2})", nev, meret, id);
+                    }
+                }
+
                 Console.ReadLine();
             }
         }
