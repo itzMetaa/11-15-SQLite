@@ -22,10 +22,19 @@ namespace _11_15_SQLite
                 )";
                 command.ExecuteNonQuery();
 
+                /*
                 var beszurCmd = conn.CreateCommand();
                 beszurCmd.CommandText = @"INSERT INTO macskak(nev,meret)
                 VALUES ('Tigris', 45), ('Cirmos', 20), ('Pici', 120)";
                 beszurCmd.ExecuteNonQuery();
+                */
+
+                var osszegCmd = conn.CreateCommand();
+                osszegCmd.CommandText = @"SELECT COUNT(*) FROM macskak";
+                long db = (long)osszegCmd.ExecuteScalar();
+
+                Console.WriteLine("Darab " + db);
+                Console.ReadLine();
             }
         }
     }
