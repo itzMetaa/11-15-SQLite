@@ -35,10 +35,20 @@ namespace _11_15_SQLite
 
                 Console.WriteLine("Darab " + db);
 
+                Console.WriteLine("Mekkora macska kell?");
+                string userMeretStr = Console.ReadLine();
+                int userMeret;
+                if (!int.TryParse(userMeretStr, out userMeret)) {
+                    Console.WriteLine("Ervenytelen meret");
+                    return;
+                }
+
                 var lekerdezesCmd = conn.CreateCommand();
                 lekerdezesCmd.CommandText = @"
                     SELECT id, nev, meret FROM macskak
+                    WHERE meret >= @meret
                 ";
+                lekerdezesCmd.Parameters.AddWithValue("@meret", userMeret);
 
                 using (var reader = lekerdezesCmd.ExecuteReader())
                 {
